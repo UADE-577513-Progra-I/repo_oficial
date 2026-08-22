@@ -7,8 +7,11 @@ import random
 # ******** Declaración de CONSTANTES ********
 
 # filas: estudiantes
-ESTUDIANTES = [
-
+ESTUDIANTES = ["Lorenzo", 
+               "Mariano",
+               "Ignacio",
+               "Agustin",
+               "Tatiana"
 ]
 
 # columnas: canciones - autores
@@ -23,11 +26,11 @@ TEMAS = [
 # Matriz de ratings según calificaciones de los estudiantes
 # 0 representa un tema todavía no escuchado/calificado.
 RATINGS = [
-    [x, x, 0, x, x],  # 
-    [x, x, 0, x, x],  # 
-    [x, x, 0, x, x],  # 
-    [x, x, 0, x, x],  # 
-    [x, x, 0, x, x],  # 
+    [3, 5, 0, 0, 0],  # Lorenzo
+    [0, 0, 0, 5, 2],  # Mariano
+    [0, 0, 0, 3, 5],  # 
+    [3, 4, 0, 0, 0],  # 
+    [5, 0, 0, 2, 0],  # 
 ]
 
 
@@ -101,7 +104,6 @@ def generar_predicciones_popularidad(ratings):
     Para cada tema no escuchado (valor 0), genera un score con el rating promedio.
     Para los temas ya calificados, coloca 0 porque no necesitan predicción.
     """
-
 
 
 # ******** Llamada función principal ********
