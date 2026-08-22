@@ -3,16 +3,10 @@
 # ********** Importar librerias ***************
 import random
 
-
 # ******** Declaración de CONSTANTES ********
 
 # filas: estudiantes
-ESTUDIANTES = ["Lorenzo", 
-               "Mariano",
-               "Ignacio",
-               "Agustin",
-               "Tatiana"
-]
+ESTUDIANTES = ["Lorenzo", "Mariano", "Ignacio", "Agustin", "Tatiana"]
 
 # columnas: canciones - autores
 TEMAS = [
@@ -28,32 +22,37 @@ TEMAS = [
 RATINGS = [
     [3, 5, 0, 0, 0],  # Lorenzo
     [0, 0, 0, 5, 2],  # Mariano
-    [0, 0, 0, 3, 5],  # 
-    [3, 4, 0, 0, 0],  # 
-    [5, 0, 0, 2, 0],  # 
+    [0, 0, 0, 3, 5],  #
+    [3, 4, 0, 0, 0],  #
+    [5, 0, 0, 2, 0]
 ]
 
 
 # ******** Declaración de la función principal ********
-def main(): 
+def main():
     print("Matriz de Ratings (original)")
+    # print(RATINGS)
     mostrar_matriz(RATINGS)
 
     predicciones_random = generar_predicciones_random(RATINGS)
     print("\nMatriz de predicciones random")
-    mostrar_matriz(predicciones_random)
+    # mostrar_matriz(predicciones_random)
 
     predicciones_popularidad = generar_predicciones_popularidad(RATINGS)
     print("\nMatriz de predicciones popularidad")
-    mostrar_matriz(predicciones_popularidad)
-
+    # mostrar_matriz(predicciones_popularidad)
 
 
 # ******** Declaración de funciones secundarias ********
 # Función que muestra una matriz en consola
 def mostrar_matriz(matriz):
-    """Muestra una matriz fila por fila."""
-    
+    """Muestra una matriz fila por fila.
+    Argumento: matriz
+    Returno Null
+    """
+    for i, fila in enumerate(matriz):
+        print(f"i: {i} : fila: {fila}")
+
 
 # Función que genera una matriz de predicciones random
 def generar_predicciones_random(ratings):
@@ -86,7 +85,7 @@ def trasponer(matriz):
 # Función que calcula el rating promedio de cada tema
 def calcular_ratings_avg(matriz):
     """
-    Genera una lista cuyos elementos corresponden a los ratings promedio 
+    Genera una lista cuyos elementos corresponden a los ratings promedio
     de cada tema. El rating promedio se calcula con las calificaciones
     de cada estudiante.
 
