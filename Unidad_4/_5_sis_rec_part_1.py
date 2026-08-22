@@ -31,12 +31,11 @@ RATINGS = [
 # ******** Declaración de la función principal ********
 def main():
     print("Matriz de Ratings (original)")
-    # print(RATINGS)
     mostrar_matriz(RATINGS)
 
     predicciones_random = generar_predicciones_random(RATINGS)
     print("\nMatriz de predicciones random")
-    # mostrar_matriz(predicciones_random)
+    mostrar_matriz(predicciones_random)
 
     predicciones_popularidad = generar_predicciones_popularidad(RATINGS)
     print("\nMatriz de predicciones popularidad")
@@ -62,7 +61,20 @@ def generar_predicciones_random(ratings):
     Para cada tema no escuchado (valor 0), genera un score aleatorio entre 1 y 5.
     Para los temas ya calificados, coloca 0 porque no necesitan predicción.
     """
-
+    n_filas = len(ratings) # 5
+    n_columnas = len(ratings[0]) # 5
+    valor_min = 1
+    valor_max = 5
+    matriz_random = []
+    for i in range(n_filas):
+        fila = []
+        for j in range(n_columnas):
+            if ratings[i][j] == 0:
+                fila.append(random.randint(valor_min, valor_max))
+            else:
+                fila.append(0)
+        matriz_random.append(fila)
+    return matriz_random
 
 # Función que genera una matriz nula (ceros)
 def generar_matriz_nula(n_filas, n_columnas):
