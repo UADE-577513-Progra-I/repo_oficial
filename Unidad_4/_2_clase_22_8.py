@@ -1,11 +1,11 @@
-"""
+
 matriz = [] # Declarar
 
 fila0 = [1, 3, 2]
 fila1 = [3, 5, 1]
 
 # Inicializar
-# matriz = [fila0, fila1]
+matriz = [fila0, fila1]
 
 # Asigno las filas a la matriz
 matriz.append(fila0)
@@ -26,7 +26,6 @@ for fila in matriz:
 for indice, fila in enumerate(matriz):
     print(f"Indice de fila: {indice} - Fila/valor: {fila}")
 
-    """
 # Generar la matriz de manera dinamica
 # Matriz nula - todos 0
 # Dimension: 2 filas / 3 columnas

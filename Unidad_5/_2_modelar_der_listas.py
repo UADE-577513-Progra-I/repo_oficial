@@ -65,6 +65,6 @@ rating_5 = [5, 3, 3, 3]   # Ignacio → DTMF
 
 ratings_lista = [rating_1, rating_2, rating_3, rating_4, rating_5]
 
-print("\n¿Qué rating dio el usuario 1 al tema 1?", rating_1[3])  # → 3
+print("\n¿Qué rating dio el usuario Lorenzo al tema Dai Dai?", rating_1[3])  # → 3
 # Pero... ¿cómo sabemos que [3] es el rating y no otra cosa?
 # Ese es el problema de las listas.

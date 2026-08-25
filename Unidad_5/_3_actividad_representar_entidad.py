@@ -64,10 +64,13 @@ tema_1 = {
 
 tema_2 = {
     # completar...
+    "id_tema":     2,
+    "tema":        "Dynamite",
+    "autor":       "BTS"
 }
 
 # Paso 2: Armá la lista de temas con los dos registros creados arriba.
-temas = # Completa
+temas = [ tema_1, tema_2]
 
 print("\nTabla TEMA (primeros 2):")
 for t in temas:
@@ -83,7 +86,20 @@ for t in temas:
 
 def ingresar_tema():
     """Solicita los campos de un tema por teclado y retorna el diccionario."""
+    tema = {}
+    id = input("Ingrese el id: ")
+    nombre_tema = input("Ingrese nombre de la banda: ")
+    autor = input("Ingrese el autor: ")
+    tema["id_tema"] = id
+    tema["tema"] = nombre_tema
+    tema["autor"] = autor
+    temas.append(tema) # Inserto el diccionario a la lista
 
+while True:
+    ingresar_tema()
+    continuar = input("Continua ? S/N:")
+    if continuar != "S":
+        break
 
 
 print("\nTabla TEMA (completa):")
@@ -107,8 +123,8 @@ print("\n--- Actividad 2: Tuplas de ids válidos ---")
 # Podes crear una lista vacia o set vacio, iterar la entidad y completarlos
 # Luego converti a tupla con la funcione tuple()
 
-ids_usuarios = # Completar
-ids_temas = # Completar
+# ids_usuarios = # Completar
+# ids_temas = # Completar
 
 # ── Actividad 3 — Construir la entidad RATING ────────────────
 print("\n--- Actividad 3: Entidad RATING ---")
@@ -122,31 +138,31 @@ print("\n--- Actividad 3: Entidad RATING ---")
 # La función pide los tres valores al usuario, valida que
 # los ids existan en las tuplas, y retorna el diccionario.
 
-ratings = []
-id_rating_counter = 1
+# ratings = []
+# id_rating_counter = 1
 
-print("\nIngresá los ratings:")
-while True:
-    id_usu = input(f"\nID de usuario {ids_usuarios}: ")
-    id_usu = int(id_usu)
+# print("\nIngresá los ratings:")
+# while True:
+#     id_usu = input(f"\nID de usuario {ids_usuarios}: ")
+#     id_usu = int(id_usu)
 
-    nuevo_rating = {
-        "id_rating":  id_rating_counter,
-        "id_usuario": id_usu,
+#     nuevo_rating = {
+#         "id_rating":  id_rating_counter,
+#         "id_usuario": id_usu,
 
-    }
+#     }
     
-    ratings.append(nuevo_rating)
-    id_rating_counter += 1
-    print(f"  ✅ Rating registrado: {nuevo_rating}")
+#     ratings.append(nuevo_rating)
+#     id_rating_counter += 1
+#     print(f"  ✅ Rating registrado: {nuevo_rating}")
 
-    terminar = input("Terminar? S/N: ")
-    if terminar == "S":
-        break
+#     terminar = input("Terminar? S/N: ")
+#     if terminar == "S":
+#         break
 
-print("\nTabla RATING:")
-for r in ratings:
-    print(r)
+# print("\nTabla RATING:")
+# for r in ratings:
+#     print(r)
 
 
 # ── Actividad 4 — Buscar tema por id ─────────────────────────
