@@ -87,8 +87,8 @@ for t in temas:
 def ingresar_tema():
     """Solicita los campos de un tema por teclado y retorna el diccionario."""
     tema = {}
-    id = input("Ingrese el id: ")
-    nombre_tema = input("Ingrese nombre de la banda: ")
+    id = int(input("Ingrese el id: "))
+    nombre_tema = input("Ingrese nombre del tema: ")
     autor = input("Ingrese el autor: ")
     tema["id_tema"] = id
     tema["tema"] = nombre_tema
@@ -123,8 +123,18 @@ print("\n--- Actividad 2: Tuplas de ids válidos ---")
 # Podes crear una lista vacia o set vacio, iterar la entidad y completarlos
 # Luego converti a tupla con la funcione tuple()
 
-# ids_usuarios = # Completar
-# ids_temas = # Completar
+lista_ids_usuarios = []
+for usuario in usuarios:
+    lista_ids_usuarios.append(usuario["id_usuario"])
+ids_usuarios = tuple(lista_ids_usuarios)
+
+lista_ids_temas = []
+for tema in temas:
+    lista_ids_temas.append(tema["id_tema"])
+ids_temas = tuple(lista_ids_temas)
+
+print("IDs de usuarios:", ids_usuarios)
+print("IDs de temas:", ids_temas)
 
 # ── Actividad 3 — Construir la entidad RATING ────────────────
 print("\n--- Actividad 3: Entidad RATING ---")
@@ -138,31 +148,44 @@ print("\n--- Actividad 3: Entidad RATING ---")
 # La función pide los tres valores al usuario, valida que
 # los ids existan en las tuplas, y retorna el diccionario.
 
-# ratings = []
-# id_rating_counter = 1
+ratings = []
+id_rating_counter = 1
 
-# print("\nIngresá los ratings:")
-# while True:
-#     id_usu = input(f"\nID de usuario {ids_usuarios}: ")
-#     id_usu = int(id_usu)
+print("\nIngresá los ratings:")
+while True:
+    id_usu = int(input(f"\nID de usuario {ids_usuarios}: "))
+    while id_usu not in ids_usuarios:
+        print("ID de usuario inválido.")
+        id_usu = int(input(f"ID de usuario {ids_usuarios}: "))
 
-#     nuevo_rating = {
-#         "id_rating":  id_rating_counter,
-#         "id_usuario": id_usu,
+    id_tema = int(input(f"ID de tema {ids_temas}: "))
+    while id_tema not in ids_temas:
+        print("ID de tema inválido.")
+        id_tema = int(input(f"ID de tema {ids_temas}: "))
 
-#     }
-    
-#     ratings.append(nuevo_rating)
-#     id_rating_counter += 1
-#     print(f"  ✅ Rating registrado: {nuevo_rating}")
+    rating = int(input("Rating entre 1 y 5: "))
+    while rating < 1 or rating > 5:
+        print("El rating debe estar entre 1 y 5.")
+        rating = int(input("Rating entre 1 y 5: "))
 
-#     terminar = input("Terminar? S/N: ")
-#     if terminar == "S":
-#         break
+    nuevo_rating = {
+        "id_rating": id_rating_counter,
+        "id_usuario": id_usu,
+        "id_tema": id_tema,
+        "rating": rating,
+    }
 
-# print("\nTabla RATING:")
-# for r in ratings:
-#     print(r)
+    ratings.append(nuevo_rating)
+    id_rating_counter += 1
+    print(f"  ✅ Rating registrado: {nuevo_rating}")
+
+    terminar = input("Terminar? S/N: ")
+    if terminar.upper() == "S":
+        break
+
+print("\nTabla RATING:")
+for r in ratings:
+    print(r)
 
 
 # ── Actividad 4 — Buscar tema por id ─────────────────────────
@@ -174,6 +197,11 @@ print("\n--- Actividad 4: Buscar tema por id ---")
 
 def buscar_tema_por_id(temas, id_tema):
     """Retorna el diccionario del tema con ese id, o None si no existe."""
+    for tema in temas:
+        if tema["id_tema"] == id_tema:
+            return tema
+
+    return None
 
 
 # Prueba
