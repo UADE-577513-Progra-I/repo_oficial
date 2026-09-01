@@ -21,6 +21,20 @@ generar la funcion ordenar_bandas() que ordena la matriz por monto recaudado des
 
 import random
 
+def main():
+    # Cargar bandas
+    bandas = cargar_bandas()
+
+    if not bandas:
+        print("No hay bandas registradas")
+        return
+
+    # Mostrar bandas ingresadas
+    print("Bandas ingresadas: ")
+    mostrar_bandas(bandas)
+    # Ordenar datos
+    print("Bandas ordenadas por entradas vendidas: ")
+    mostrar_bandas(ordenar_bandas_burbujeo(bandas))
 
 def cargar_bandas():
     bandas = []
@@ -59,24 +73,11 @@ def ordenar_bandas_burbujeo(bandas):
 
 
 def ordenar_bandas_sorted(bandas):
-    bandas_sorted = sorted(bandas, key=lambda banda: banda[1], reverse=True)
+    bandas_sorted = sorted(bandas, key=lambda banda: banda[2], reverse=True)
     return bandas_sorted
 
 
-def main():
-    # Cargar bandas
-    bandas = cargar_bandas()
 
-    if not bandas:
-        print("No hay bandas registradas")
-        return
-
-    # Mostrar bandas ingresadas
-    print("Bandas ingresadas: ")
-    mostrar_bandas(bandas)
-    # Ordenar datos
-    print("Bandas ordenadas por entradas vendidas: ")
-    mostrar_bandas(ordenar_bandas_burbujeo(bandas))
 
 
 if __name__ == "__main__":
