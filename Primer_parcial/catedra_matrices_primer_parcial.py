@@ -22,6 +22,10 @@ def gen_matriz_nula(n_filas, n_columnas):
         matriz_nula.append(fila)
     return matriz_nula
 
+def gen_nula_lxc(n_filas, n_columnas):
+    matriz_nula = [0*n_columnas for _ in range(n_filas)]
+
+
 def gen_negativo(matriz):
     n_filas = len(matriz)
     n_columnas = len(matriz[0])
