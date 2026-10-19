@@ -33,8 +33,15 @@ temas = [
     {"id_tema": 5, "nombre": "Positions", "autor": "Ariana Grande"},
 ]
 
+def validar_id_tema(id_tema:str):
+    """
+    Returns True si id_tema es convertible a int 
+    o False si no lo es
+    """
+    patron = r"[0-9]+" # completar
+    return re.fullmatch(patron,id_tema)
 
-def buscar_tema_por_id(id_tema, temas):
+def buscar_tema_por_id(id_tema:int, temas:list):
     """
     Busca un tema en la lista TEMAS por su id.
     Retorna el diccionario del tema o None si no existe.
@@ -44,14 +51,21 @@ def buscar_tema_por_id(id_tema, temas):
         print("id_tema debe ser int")
         return None
 
-    for tema in temas:
-        if tema["id_tema"] == id_tema:
-            return tema
-    return None
+    # Lista por comprension
+    # return next((t for t in temas if t["id_tema"] == id_tema),None)
+    # return list(filter(lambda t : t["id_tema"] == id_tema, temas))
+    return next(filter(lambda t : t["id_tema"] == id_tema, temas), None)
+
+def buscar_tema_por_nombre(nombre:str, temas:list):
+    return [t for t in temas if re.search(nombre, t["nombre"], re.IGNORECASE)] # Completar
 
 
 # Menu principal
-id_tema = int(input("Ingrese el id_tema a buscar: "))
+id_tema = input("ID Tema: ").strip()
+while not validar_id_tema(id_tema):
+    print("ERROR! El id_tema solo puede contener numeros.")
+    id_tema = input("ID tema: ").strip()
+id_tema = int(id_tema)
 print(buscar_tema_por_id(id_tema, temas))
 
 

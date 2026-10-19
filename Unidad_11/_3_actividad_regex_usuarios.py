@@ -17,10 +17,12 @@ usuarios = []
 
 
 def validar_nombre(nombre:str):
-    return True
+    patron = r"[a-zA-Z ]+" # completar
+    return re.fullmatch(patron, nombre)
 
 def validar_email(email:str):
-    return True
+    patron = r"[\w.+-]+@[\w-]+(\.[A-Za-z0-9-]+)+"
+    return re.fullmatch(patron, email)
 
 
 def crear_usuario(usuarios):
